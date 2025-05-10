@@ -1,0 +1,47 @@
+//require('dotenv').config()
+import dotenv from 'dotenv'
+
+import mongoose from "mongoose";
+import { DB_NAME } from "./constants.js";
+import connectDB from "./db/index.js";
+
+dotenv.config({
+    path: './.env'
+  });
+  
+
+
+/*
+import express from "express"
+const app = express()
+
+( async () => 
+    {
+        try
+        {
+           await mongoose.connect(`${process.env.MONGDB_URI}/${DB_NAME}`)
+
+           app.on("error", (error)=> {
+            console.log("ERRR:", error)
+            throw err
+
+           })
+
+           app.listen(process.env.PORT, () => {
+                console.log(`app is listening on port ${process.env.PORT}`)
+           })
+
+        }catch(error)
+        {
+            console.error("ERROR :", error)
+            throw err
+        }
+
+    })()
+        */
+                // this is one approach with express js....
+
+                /* other professional approach is to import the functions file
+                   in index.js file which are written in other file... */
+
+                   connectDB()
