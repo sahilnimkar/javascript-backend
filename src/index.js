@@ -44,4 +44,13 @@ const app = express()
                 /* other professional approach is to import the functions file
                    in index.js file which are written in other file... */
 
-                   connectDB()
+
+connectDB()
+.then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+        console.log(` Server is running at port : ${process.env.PORT}`)
+    })
+})
+.catch((err) => {
+    console.log("mongoDB Connection Failed!", err)
+})
