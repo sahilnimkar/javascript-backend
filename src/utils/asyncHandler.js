@@ -1,12 +1,9 @@
 
 // Production grade wrapper function using Promise
 
-const asyncHandler = (requestHandlers) => {
-    (req,res,next) =>{
-        Promise.resolve(requestHandler(req,res,next)).
-        reject((err) => next(err))
-    }
-}
+const asyncHandler = (fn) => (req, res, next) => {
+    Promise.resolve(fn(req, res, next)).catch(next);
+};
 
 // Production grade wrapper function to use in common proj with try-catch
 
@@ -21,7 +18,7 @@ const asyncHandler = (requestHandlers) => {
 //     }
 // }
 
-export {asyncHandler}
+export { asyncHandler }
 
 // const asyncHandler = () => {}
 // const asyncHandler = (function) => {() => {}}
